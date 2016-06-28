@@ -3,25 +3,25 @@
 	<head>
 		<title>SnapCube - Home</title>
 		<meta charset="utf-8">
-		<!--<meta http-equiv="refresh" content="0; url=http://example.com/" />-->
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="css/index-style.css">
 	</head>
 
 	<body onload="closePopup()">
 		<header>
-			<h1>SnapCube<sup>&reg;</sup></h1>
+			<h1>SnapCube</h1>
 		</header>
 		<nav>
 			<div id="nav_buttons">
-			<div class="button"><div class="button_text">1.Upload Photos</div></div>
-			<div class="button"><div class="button_text">2.Rotate and View the cube</div></div>
-			<div class="button"><div class="button_text">3.Save your 3D Web Album!</div></div>
+			<div class="button">1. 	Upload Photos</div>
+			<div class="button">2. Rotate and View the cube</div>
+			<div class="button">3. Save your 3D Web Album!</div>
 			</div>
 		</nav>
-		
 
-		
+		<div id="canvas">
+		</div>	
+
 		<!-- popup -->
 		<div id="popup1" class="overlay" onclick="closePopup()">
 			<div class="popup" onclick="event.cancelBubble=true;if(event.stopPropagation) event.stopPropagation();">
@@ -52,7 +52,7 @@
 							<td>
 								<div class="buttonSection">
 									<input type="file" id="browse" onchange="loadFile(event)" /><br>
-									<input type="button" id="upload" value="Upload" onclick ="uploadFunc(curr_index)" disabled=true /><br>
+									<input type="button" id="upload" value="Upload" onclick ="uploadFunc()" disabled=true /><br>
 									<input type="button" value="Done" onclick ="closePopup()" />
 								</div>
 							<td>

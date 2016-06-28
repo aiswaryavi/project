@@ -81,20 +81,14 @@ nav {
 	transition-duration: 0.2s;
 }
 
-.button_text {
-	top: auto;
-	bottom: auto;
-	left: auto;
-	right: auto;
-}
-
 #canvas {
 	background-color: #900;
-	border: 1px solid #333;
-/*	margin-top: auto;
-	margin-bottom: auto;	*/
 	margin-left: auto;
 	margin-right: auto;	
+	margin-top: 3%;
+	margin-bottom: 3%;
+	position: relative;
+	z-index: 1;
 }
 
 #help {
@@ -131,22 +125,17 @@ nav {
 }
 
 .toggleButton {
-	display: inline-block;
-/*	width: 15%;
-	height: 5%;
-*/	background-color: #fff;
-	color: #000;
-	font-size: 70%;
 	border: none;
 	outline: none;
+	display: inline-block;
 	position: absolute;
 	top: 3%;
 	right: 4%;
+	opacity: 0.5;
 }
 
 .toggleButton:hover {
-	background-color: #000;
-	color: #fff;
+	opacity: 1;
 	cursor: pointer;
 	-webkit-transition-duration: 0.4s;
 	transition-duration: 0.4s;
@@ -158,13 +147,14 @@ footer {
 	right: 0;
 	height: 4%;
 	padding: 1px;
-	background-color: #89f;
+	background-color: #146;
 	position: absolute;
 	display: inline;
 	z-index: 3;
 }
 
 #footer-content {
+	color: #bbb;
 	position: absolute;
 	font-size: 2.2vmin;
 	top: 50%;
