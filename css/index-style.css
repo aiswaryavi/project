@@ -1,0 +1,310 @@
+/*
+	CSS stylesheet for index.html and any subsequent pages, if any.
+*/
+@font-face {
+	font-family: eurof55;
+	src: url('fonts/eurof55.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Powerweld;
+	src: url('fonts/Powerweld.ttf') format('truetype');
+}
+
+body {
+	background-color: #135;
+	margin: 0px;
+	overflow-x: hidden;
+}
+
+header {
+	width: 100%;
+	height: 9vmin;
+	background-color: #123;
+	color: #eee;
+	text-align: left;
+	padding: 0px;
+	position: relative;
+}
+
+h1{
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	font-family: Powerweld;
+	font-size: 170%;
+	position: absolute;
+}
+
+nav {
+	background-color: #146;
+	height: 5vmin;
+	width: 100%;
+	color: #bbb;
+	position: relative;
+}
+
+#nav_buttons {
+	display: inline-block;
+	height: 5vmin;
+	width: 98%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	font-family: eurof55;
+	font-size: 3vmin;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+.button {
+	float: left;
+	min-width: 30%;
+	width: 32.5%;
+	height: 5vmin;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	border: 0px;
+	border-radius: 1px 1px 8px 8px;
+	text-align: center;
+	position: static;
+}
+
+.button:hover {
+	background-color: #147;
+	cursor: default;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+
+.button_text {
+	top: auto;
+	bottom: auto;
+	left: auto;
+	right: auto;
+}
+
+#canvas {
+	background-color: #900;
+	border: 1px solid #333;
+/*	margin-top: auto;
+	margin-bottom: auto;	*/
+	margin-left: auto;
+	margin-right: auto;	
+}
+
+#help {
+	display: block;
+	background-color: #222;
+	position: absolute;
+	top: 3%;
+	left: 3%;
+	color: #0e0;
+	padding: 5px;
+}
+
+#legend {
+	font-size: 90%;
+	display: none;
+}
+
+#help:hover {
+	cursor: help;
+}
+
+#help:hover #legend {
+	display: inline-block;
+	background-color: #222;
+	border: 0px solid #000;
+	border-radius: 15px;
+	border-top-left-radius: 0px;
+	padding: 10%;
+	position: absolute;
+	top: 100%;
+	left: 0%;
+	color: #0e0;
+	cursor: help;
+}
+
+.toggleButton {
+	display: inline-block;
+/*	width: 15%;
+	height: 5%;
+*/	background-color: #fff;
+	color: #000;
+	font-size: 70%;
+	border: none;
+	outline: none;
+	position: absolute;
+	top: 3%;
+	right: 4%;
+}
+
+.toggleButton:hover {
+	background-color: #000;
+	color: #fff;
+	cursor: pointer;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+}
+
+footer {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 4%;
+	padding: 1px;
+	background-color: #89f;
+	position: absolute;
+	display: inline;
+	z-index: 3;
+}
+
+#footer-content {
+	position: absolute;
+	font-size: 2.2vmin;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+/* styling for the pop-up*/
+
+.overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: transparent;
+	width: 100%;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	-webkit-transition: transform 0.5s, opacity 0.5s;
+	transition: transform 0.5s, opacity 0.5s;
+	visibility: hidden;
+	opacity: 0;
+}
+ 
+.overlay:target {
+	width: 100%;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	visibility: visible;
+	opacity: 1;
+}
+
+.popup {
+	padding: 1%;
+	background: #eee;
+	border-radius: 5px;
+	display: inline-block;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	position: absolute;
+	-webkit-transition: all 5s ease-in-out;
+	transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+	color: #333;
+	font-family: Tahoma, Arial, sans-serif;
+	margin-top: 1%;
+	font-size: 1.3vmax;
+}
+
+.popup .content .close {
+	position: absolute;
+	top: 0.5%;
+	right: 1%;
+	opacity: 0.5;
+	transition: opacity 0.5s;
+}
+
+.popup .content .close:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+
+.popup .content .close #closeInfo {
+	position: absolute;
+	padding: 40%;
+	top: 100%;
+	right: 0%;
+	color: #fff;
+	font-size: 90%;
+	background-color: #333;
+	border-radius: 10px;
+	visibility: hidden;
+}
+
+.popup .content .close:hover #closeInfo {
+	visibility: visible;
+}
+
+.popup .content {
+	display: inline-block;
+	position: relative;
+}
+
+.popup .content #imageBox {
+	display: inline-block;
+	position: relative;
+}
+
+.popup .content #imageBox #image {
+	float: left;
+/*	max-width: 600px;
+	max-height: 600px;
+*/
+}
+
+.popup .content .imgnav {
+	position: absolute;
+	background-color: #ccc;
+	height: 100%;
+	width: 10%;
+	top: 0;
+	bottom: 0;
+	opacity: 0.3;
+	transition: opacity 0.3s;
+}
+
+.popup .content .imgnav:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.popup .content .imgnav img {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	transform: translate(0,-50%);
+	left: 0;
+	right: 0;
+}
+
+.popup .content #prev {
+	left: 0%;
+}
+
+.popup .content #next {
+	right: 0%;
+}
+
+.popup .content .buttonSection {
+	padding: 2%;
+	margin-left: 3%;
+	display: inline-block;
+}
+
+.popup input[type="file"] {
+	color: transparent;
+	width: 115px;
+}

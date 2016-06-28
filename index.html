@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>SnapCube - Home</title>
+		<meta charset="utf-8">
+		<!--<meta http-equiv="refresh" content="0; url=http://example.com/" />-->
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" href="css/index-style.css">
+	</head>
+
+	<body onload="closePopup()">
+		<header>
+			<h1>SnapCube<sup>&reg;</sup></h1>
+		</header>
+		<nav>
+			<div id="nav_buttons">
+			<div class="button"><div class="button_text">1.Upload Photos</div></div>
+			<div class="button"><div class="button_text">2.Rotate and View the cube</div></div>
+			<div class="button"><div class="button_text">3.Save your 3D Web Album!</div></div>
+			</div>
+		</nav>
+		
+
+		
+		<!-- popup -->
+		<div id="popup1" class="overlay" onclick="closePopup()">
+			<div class="popup" onclick="event.cancelBubble=true;if(event.stopPropagation) event.stopPropagation();">
+				<div class="content">
+				<!-- beginning of popup content-->
+					<h2>UPLOAD PHOTO</h2>
+					<div class="close">
+						<a onclick="closePopup()">
+							<img src="images/extras/close.png" height="15" width="15" />
+						</a>
+						<div id="closeInfo">
+							Close
+						</div>						
+					</div>
+					<table>
+						<tr>
+							<td>
+								<div id="imageBox">
+									<img src="images/cube1.jpg" id="image" alt="No Image" />
+									<div id="prev" class="imgnav" onclick ="changeImageP()">
+										<img src="images/extras/prev.png" />
+									</div>
+									<div id="next" class="imgnav" onclick ="changeImageN()">
+										<img src="images/extras/next.png" />
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="buttonSection">
+									<input type="file" id="browse" onchange="loadFile(event)" /><br>
+									<input type="button" id="upload" value="Upload" onclick ="uploadFunc(curr_index)" disabled=true /><br>
+									<input type="button" value="Done" onclick ="closePopup()" />
+								</div>
+							<td>
+						</tr>
+					</table>
+				<!--End of pop-up content  -->
+				</div>
+			</div>
+		</div>
+		<!--end of popup-->
+
+		<footer>
+			<div id="footer-content">
+				<cite>Copyright &copy; 2016. All rights reserved.</cite>
+			</div>
+		</footer>
+
+		<script src="js/library/three.js"></script>
+		<script src="js/library/TrackballControls.js"></script>
+		<script src="js/-cube-code.js">	</script>
+
+	</body>
+
+</html>
+
