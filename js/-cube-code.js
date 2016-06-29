@@ -9,6 +9,7 @@ var mesh;
 var blobUrl;
 var curr_index=0;
 var rotating=true;
+var R_WIDTH, R_HEIGHT;
 var im=["images/cube1.jpg","images/cube2.jpg","images/cube3.jpg","images/cube4.jpg","images/cube5.jpg","images/cube6.jpg"];
 
 webglAvailable();
@@ -20,16 +21,19 @@ function init() {
 
 	//to create container inside which the 3D scene is rendered
 	container = document.getElementById("canvas");
-	container.style.width = 0.65*window.innerWidth + "px";
-	container.style.height = 0.55*window.innerHeight + "px";
+//	container.style.width = window.innerWidth + "px";
+//	container.style.height = window.innerHeight + "px";
 
 	//definition of renderer
-	var R_WIDTH = parseFloat(container.style.width);
-	var R_HEIGHT = parseFloat(container.style.height);
+	
+	var containerInfo = container.getBoundingClientRect();
+	R_WIDTH = containerInfo.width;
+	R_HEIGHT = containerInfo.height;
 
 	renderer = new THREE.WebGLRenderer();
+	renderer.domElement.setAttribute("id","render");
 	renderer.setSize( R_WIDTH, R_HEIGHT );
-	renderer.setClearColor( 0x113355 );
+	renderer.setClearColor( 0x113365 );
 	renderer.setPixelRatio( window.devicePixelRatio );
 
 	//to create "help" bar
@@ -62,10 +66,10 @@ function init() {
 	scene = new THREE.Scene();
 
 	camera = new THREE.PerspectiveCamera( 45, R_WIDTH / R_HEIGHT , 1, 1000 );
-	camera.position.set( 150, 150, 350 );
+	camera.position.set( 150, 150, (R_WIDTH+R_HEIGHT)/5 );
 
 	controls = new THREE.TrackballControls( camera, renderer.domElement );
-	controls.minDistance = 250;
+	controls.minDistance = 350;
 	controls.maxDistance = 800;
 	controls.rotateSpeed = 2.0;
 	controls.zoomSpeed = 0.5;
@@ -73,6 +77,8 @@ function init() {
 	
 	cubeRender( );
 	animate();
+	
+	window.addEventListener( 'resize', onWindowResize, false );
 }
 
 function cubeRender( ){
@@ -115,6 +121,7 @@ function toggle() {
 	else
 		playButton.innerHTML = "<img src='images/extras/rotation.png' width='20px' height='20px' />"
 }
+
 function onDocumentMouseDown( event ) {
 	var raycaster = new THREE.Raycaster();
 
@@ -171,6 +178,7 @@ function closePopup() {
 function newscene() {
 	scene = new THREE.Scene();	
 }
+
 function changeImageP(){
 	
 	curr_index-=1;
@@ -180,6 +188,7 @@ function changeImageP(){
 	document.getElementById("image").src=im[curr_index];
 
 }
+
 function changeImageN(){
 	
 	//index_val=curr_index;
@@ -190,6 +199,7 @@ function changeImageN(){
 	document.getElementById("image").src=im[curr_index];
 
 }
+
 function webglAvailable() {
     try {
         var canvas1 = document.createElement("canvas");
@@ -200,4 +210,16 @@ function webglAvailable() {
     } catch(e) { 
         return false;
     } 
+}
+
+function onWindowResize(){
+
+	var containerInfo = container.getBoundingClientRect();
+	R_WIDTH = containerInfo.width;
+	R_HEIGHT = containerInfo.height;
+
+	camera.aspect = R_WIDTH / R_HEIGHT;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize( R_WIDTH, R_HEIGHT );
 }

@@ -11,94 +11,114 @@
 	src: url('fonts/Powerweld.ttf') format('truetype');
 }
 
+html {
+	height:100%;
+}
+
 body {
+	min-width: 240px;
+	min-height: 100%;
+	position: relative;
+	margin: 0;
+	
 	background-color: #135;
-	margin: 0px;
-	overflow-x: hidden;
 }
 
 header {
-	width: 100%;
-	height: 9vmin;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 10%;
+	min-width: 200px;
+	
 	background-color: #123;
-	color: #eee;
-	text-align: left;
-	padding: 0px;
-	position: relative;
+	color: #eee;	
 }
 
 h1{
-	text-align: center;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	left: 50%;
+	position: absolute;
 	top: 50%;
+	left: 50%;
 	-webkit-transform: translate(-50%,-50%);
 	transform: translate(-50%,-50%);
+	margin: 0;
+	
 	font-family: Powerweld;
-	font-size: 170%;
-	position: absolute;
+	font-size: 3vh;
 }
 
 nav {
-	background-color: #146;
+/*	background-color: #146;
 	height: 5vmin;
 	width: 100%;
 	color: #bbb;
-	position: relative;
+*/
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 10%;
+	min-height: 4%;
 }
 
-#nav_buttons {
-	display: inline-block;
-	height: 5vmin;
-	width: 98%;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	font-family: eurof55;
-	font-size: 3vmin;
-	-webkit-transform: translate(-50%,-50%);
-	transform: translate(-50%,-50%);
-}
-.button {
-	float: left;
+.step-button {
+/*	float: left;
 	min-width: 30%;
 	width: 32.5%;
 	height: 5vmin;
 	margin-left: auto;
 	margin-right: auto;
-	display: block;
+	display: none;
 	border: 0px;
 	border-radius: 1px 1px 8px 8px;
 	text-align: center;
 	position: static;
+*/
+	display: flex;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+
+	
+	background-color: #146;
+	color: #ddd;
+	font-family: eurof55;
+	font-size: 2.5vmin;
 }
 
-.button:hover {
-	background-color: #147;
-	cursor: default;
-	-webkit-transition-duration: 0.2s;
-	transition-duration: 0.2s;
+section {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 4%;
+
+	background-color: #300;
 }
 
 #canvas {
-	background-color: #900;
-	margin-left: auto;
-	margin-right: auto;	
-	margin-top: 3%;
-	margin-bottom: 3%;
-	position: relative;
+/*	background-color: #900;
+	left: auto;
+	right: auto;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	z-index: 1;
+*/
+	position: absolute;
+	background-color: #0d0;
+	height: 100%;
+	width: 100%;
 	z-index: 1;
 }
 
 #help {
-	display: block;
-	background-color: #222;
 	position: absolute;
 	top: 3%;
 	left: 3%;
+	padding: 4px;
+	
+	background-color: #222;
 	color: #0e0;
-	padding: 5px;
 }
 
 #legend {
@@ -129,6 +149,7 @@ nav {
 	outline: none;
 	display: inline-block;
 	position: absolute;
+	padding: 0px;
 	top: 3%;
 	right: 4%;
 	opacity: 0.5;
@@ -142,6 +163,8 @@ nav {
 }
 
 footer {
+/*
+	display:none;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -149,8 +172,17 @@ footer {
 	padding: 1px;
 	background-color: #146;
 	position: absolute;
-	display: inline;
 	z-index: 3;
+*/
+	position: absolute;
+	display: block;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 4%;
+	z-index: 3;
+	
+	background-color: #146;
 }
 
 #footer-content {
@@ -171,7 +203,6 @@ footer {
 	left: 0;
 	right: 0;
 	background: transparent;
-	width: 100%;
 	-webkit-transform: scale(0);
 	transform: scale(0);
 	-webkit-transition: transform 0.5s, opacity 0.5s;
@@ -181,7 +212,6 @@ footer {
 }
  
 .overlay:target {
-	width: 100%;
 	-webkit-transform: scale(1);
 	transform: scale(1);
 	visibility: visible;
@@ -297,4 +327,58 @@ footer {
 .popup input[type="file"] {
 	color: transparent;
 	width: 115px;
+}
+
+@media only screen and (min-width: 800px) {
+	.step-button {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: 0;
+		width: 33.33%;
+	}
+	
+	.step-button:hover {
+		background-color: #147;
+		cursor: default;
+		-webkit-transition-duration: 0.2s;
+		transition-duration: 0.2s;
+	}
+		
+	.step-button:nth-child(2) {
+		transform: translate(100%,0%);
+	}
+
+	.step-button:nth-child(3) {
+		transform: translate(200%,0%);
+	}
+	
+	section {
+		top: 14%;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.step-button {
+		position: absolute;
+		width: 100%;
+		top: 0;
+		bottom: 0;
+	}
+	
+	.step-button:nth-child(odd) {
+		background-color: #158;
+	}
+	
+	.step-button:nth-child(2) {
+		transform: translate(0%,100%);
+	}
+
+	.step-button:nth-child(3) {
+		transform: translate(0%,200%);
+	}
+			
+	section {
+		top: 22%;
+	}
 }
