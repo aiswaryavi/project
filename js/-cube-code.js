@@ -33,7 +33,7 @@ function init() {
 	renderer = new THREE.WebGLRenderer();
 	renderer.domElement.setAttribute("id","render");
 	renderer.setSize( R_WIDTH, R_HEIGHT );
-	renderer.setClearColor( 0x113365 );
+	renderer.setClearColor( 0x283018 );
 	renderer.setPixelRatio( window.devicePixelRatio );
 
 	//to create "help" bar
@@ -50,7 +50,7 @@ function init() {
 	playButton = document.createElement('button');
 	
 	playButton.setAttribute("onclick","toggle()");
-	playButton.setAttribute("class","toggleButton");
+	playButton.setAttribute("class","toggle-button");
 	playButton.innerHTML = "<img src='images/extras/rotation.png' width='20px' height='20px' />"
 
 	container.appendChild( renderer.domElement );

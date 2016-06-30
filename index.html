@@ -14,7 +14,7 @@
 		<nav>
 			<div class="step-button">1. Upload Photos</div>
 			<div class="step-button">2. Rotate and View the cube</div>
-			<div class="step-button">3. Save your 3D Web Album!</div>
+			<div class="step-button">3. Save your 3D Web Album</div>
 		</nav>
 		<section>
 			<div id="canvas">
@@ -48,13 +48,17 @@
 									</div>
 								</div>
 							</td>
+						</tr>
+						<tr>
 							<td>
-								<div class="buttonSection">
-									<input type="file" id="browse" onchange="loadFile(event)" /><br>
-									<input type="button" id="upload" value="Upload" onclick ="uploadFunc()" disabled=true /><br>
-									<input type="button" value="Done" onclick ="closePopup()" />
+								<div class="button-section">
+									<form autocomplete="off">
+										<input type="file" id="browse" onchange="loadFile(event)" />
+										<input type="button" value="Done" onclick ="closePopup()" />
+										<input type="button" id="upload" value="Upload" onclick ="uploadFunc()" disabled=true />
+									</form>
 								</div>
-							<td>
+							</td>
 						</tr>
 					</table>
 				<!--End of pop-up content  -->
@@ -64,7 +68,7 @@
 		<!--end of popup-->
 
 		<footer>
-			<div id="footer-content">
+			<div id="footer_content">
 				<cite>Copyright &copy; 2016. All rights reserved.</cite>
 			</div>
 		</footer>
