@@ -12,7 +12,7 @@ var rotating=true;
 var R_WIDTH, R_HEIGHT;
 var im=["images/cube1.jpg","images/cube2.jpg","images/cube3.jpg","images/cube4.jpg","images/cube5.jpg","images/cube6.jpg"];
 
-webglAvailable();
+//webglAvailable();
 
 init();
 
@@ -30,21 +30,28 @@ function init() {
 	R_WIDTH = containerInfo.width;
 	R_HEIGHT = containerInfo.height;
 
-	renderer = new THREE.WebGLRenderer();
+	webglAvailable();
+	if ( webglAvailable() ) {
+		renderer = new THREE.WebGLRenderer();
+	} else {
+		renderer = new THREE.CanvasRenderer();
+	}
+
+	//renderer = new THREE.WebGLRenderer();
 	renderer.domElement.setAttribute("id","render");
 	renderer.setSize( R_WIDTH, R_HEIGHT );
 	renderer.setClearColor( 0x283018 );
 	renderer.setPixelRatio( window.devicePixelRatio );
 
 	//to create "help" bar
-	var legend = document.createElement('div');
-	legend.setAttribute("id","legend");
-	legend.innerHTML = "<code><p align='left' style='margin-left: 4px'>Drag&nbsp;:&nbsp;Rotate<br>Scroll&nbsp;:&nbsp;Zoom&nbsp;In/Out<br>Click on a face to upload photo</p></code>";
+//	var legend = document.createElement('div');
+//	legend.setAttribute("id","legend");
+//	legend.innerHTML = "<code><p align='left' style='margin-left: 4px'>Drag&nbsp;:&nbsp;Rotate<br>Scroll&nbsp;:&nbsp;Zoom&nbsp;In/Out<br>Click on a face to upload photo</p></code>";
 
-	var help = document.createElement('div');
-	help.setAttribute("id","help");
-	help.innerHTML = "<code>Help</code>";
-	help.appendChild(legend);
+//	var help = document.createElement('div');
+//	help.setAttribute("id","help");
+//	help.innerHTML = "<code>Help</code>";
+//	help.appendChild(legend);
 
 	//to create start/stop button
 	playButton = document.createElement('button');
@@ -54,8 +61,13 @@ function init() {
 	playButton.innerHTML = "<img src='images/extras/rotation.png' width='20px' height='20px' />"
 
 	container.appendChild( renderer.domElement );
-	container.appendChild( help );
+//	container.appendChild( help );
 	container.appendChild( playButton );
+
+	/*share button
+	var share = document.getElementById("share");
+	share.setAttribute("onclick","window.open('https://plus.google.com/share?url=https%3A//aiswaryavi.github.io/project/')");
+	*/
 
 	//to restrict image size
 	document.getElementById("image").style.maxWidth = 0.7*window.innerWidth + "px";
@@ -64,13 +76,14 @@ function init() {
 
 	//definition of scene, camera and controls
 	scene = new THREE.Scene();
-
+	var ord = 300;
 	camera = new THREE.PerspectiveCamera( 45, R_WIDTH / R_HEIGHT , 1, 1000 );
-	camera.position.set( 150, 150, (R_WIDTH+R_HEIGHT)/5 );
+	camera.position.set( ord, ord, ord);
+	console.log(R_WIDTH,R_HEIGHT);
 
 	controls = new THREE.TrackballControls( camera, renderer.domElement );
-	controls.minDistance = 350;
-	controls.maxDistance = 800;
+	controls.minDistance = 275;
+	controls.maxDistance = 700;
 	controls.rotateSpeed = 2.0;
 	controls.zoomSpeed = 0.5;
 	controls.noPan = true;
@@ -90,13 +103,14 @@ function cubeRender( ){
 	var materials = [];
 	var i;
 	for(i in im){
-		materials[i] = new THREE.MeshPhongMaterial( { map: (new THREE.TextureLoader().load( im[i] )) } );
+		materials[i] = new THREE.MeshPhongMaterial( { map: (new THREE.TextureLoader().load( im[i] )), overdraw:0.5 } );
 	}
 	var material = new THREE.MeshFaceMaterial( materials );
 
 	mesh = new THREE.Mesh( geometry, material );
 
 	scene.add( mesh );
+	mesh.position.set(0,0,0);
 	renderer.render(scene,camera);
 	renderer.domElement.addEventListener( 'click', onDocumentMouseDown, false );
 }
@@ -154,7 +168,11 @@ function loadFile(event) {
 
 function newpop1()
 {
-	location.href = "#popup1";
+	//location.href = "#popup1";
+	var overlay = document.getElementById("popup1");
+	overlay.style.transform = "scale(1)";
+	overlay.style.visibility = "visible";
+	overlay.style.opacity = "1";
 	document.getElementById("image").src = im[curr_index];
 }
 
@@ -169,9 +187,12 @@ function uploadFunc() {
 }
 
 function closePopup() {
-	location.href = "#";
-	
+	//location.href = "#";
 	//to disable "upload" button
+	var overlay = document.getElementById("popup1");
+	overlay.style.transform = "scale(0)";
+	overlay.style.visibility = "hidden";
+	overlay.style.opacity = "0";
 	document.getElementById("upload").disabled=true;
 }
 
@@ -200,18 +221,6 @@ function changeImageN(){
 
 }
 
-function webglAvailable() {
-    try {
-        var canvas1 = document.createElement("canvas");
-        return !!
-            window.WebGLRenderingContext && 
-            (canvas.getContext("webgl") || 
-                canvas.getContext("experimental-webgl"));
-    } catch(e) { 
-        return false;
-    } 
-}
-
 function onWindowResize(){
 
 	var containerInfo = container.getBoundingClientRect();
@@ -223,3 +232,15 @@ function onWindowResize(){
 
 	renderer.setSize( R_WIDTH, R_HEIGHT );
 }
+
+function webglAvailable() {
+		try {
+			var canvas = document.createElement( 'canvas' );
+			return !!( window.WebGLRenderingContext && (
+				canvas.getContext( 'webgl' ) ||
+				canvas.getContext( 'experimental-webgl' ) )
+			);
+		} catch ( e ) {
+			return false;
+		}
+	}

@@ -3,27 +3,40 @@
 	<head>
 		<title>SnapCube - Home</title>
 		<meta charset="utf-8">
+		<!--<meta http-equiv="refresh" content="0; url=http://example.com/" />-->
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="css/index-style.css">
 	</head>
 
-	<body onload="closePopup()">
+<body onload="closePopup()">
 		<header>
 			<h1>SnapCube</h1>
 		</header>
 		<nav>
-			<div class="step-button">1. Upload Photos</div>
-			<div class="step-button">2. Rotate and View the cube</div>
-			<div class="step-button">3. Save your 3D Web Album</div>
+			<div class="step-button">Step 1: Upload Photos</div>
+			<div class="step-button">Step 2: Rotate and View the cube</div>
+			<div class="step-button">Step 3: Save your 3D Web Album!</div>
 		</nav>
 		<section>
 			<div id="canvas">
+				<div id="help">
+					Help
+					<div id="legend">
+						<p align='left' style='margin-left: 4px'>
+						<i>
+						Drag : Rotate<br>
+						Scroll : Zoom In/Out<br>
+						Click on a face to upload photo
+						</i>
+						</p>
+					</div>
+				</div>
 			</div>
 		</section>
 
 		<!-- popup -->
 		<div id="popup1" class="overlay" onclick="closePopup()">
-			<div class="popup" onclick="event.cancelBubble=true;if(event.stopPropagation) event.stopPropagation();">
+			<div id="pop1" class="popup" onclick="event.cancelBubble=true;if(event.stopPropagation) event.stopPropagation();">
 				<div class="content">
 				<!-- beginning of popup content-->
 					<h2>UPLOAD PHOTO</h2>
@@ -66,6 +79,21 @@
 			</div>
 		</div>
 		<!--end of popup-->
+		
+		<div id="share_desktop">
+		<!--	<div class="share-panel">
+				<img src="/home/user/Downloads/share.png" id="share_global" />
+			</div>-->
+			<div class="share-panel" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A//aiswaryavi.github.io/project/')">
+				<img src="/home/user/Downloads/facebook.png" />
+			</div>
+			<div class="share-panel" onclick="window.open('https://plus.google.com/share?url=https%3A//aiswaryavi.github.io/project/')">
+				<img src="/home/user/Downloads/googleplus.png" />
+			</div>
+			<div class="share-panel" onclick="window.open('https://twitter.com/home?status=https%3A//aiswaryavi.github.io/project/')">
+				<img src="/home/user/Downloads/twitter.png" />
+			</div>
+		</div>
 
 		<footer>
 			<div id="footer_content">
@@ -73,7 +101,10 @@
 			</div>
 		</footer>
 
+		<script src="js/library/cordova.js"></script>
 		<script src="js/library/three.js"></script>
+		<script src="js/library/CanvasRenderer.js"></script>
+	        <script src="js/library/Projector.js"></script>
 		<script src="js/library/TrackballControls.js"></script>
 		<script src="js/-cube-code.js">	</script>
 	</body>
