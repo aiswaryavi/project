@@ -12,15 +12,15 @@
 		<header>
 			<h1>SnapCube</h1>
 		</header>
-		<nav>
+<!--		<nav>
 			<div class="step-button">Step 1: Upload Photos</div>
 			<div class="step-button">Step 2: Rotate and View the cube</div>
 			<div class="step-button">Step 3: Save your 3D Web Album!</div>
-		</nav>
+		</nav>										-->
 		<section>
 			<div id="canvas">
-				<div id="help">
-					Help
+				<button class="canvas-button" id="help">
+					<img src="images/extras/info.png" />
 					<div id="legend">
 						<p align='left' style='margin-left: 4px'>
 						<i>
@@ -30,7 +30,10 @@
 						</i>
 						</p>
 					</div>
-				</div>
+				</button>
+				<button class="canvas-button" id="toggle_button" onclick="toggle()" >
+					<img src="images/extras/rotation.png" />
+				</button>
 			</div>
 		</section>
 
@@ -81,9 +84,6 @@
 		<!--end of popup-->
 		
 		<div id="share_desktop">
-		<!--	<div class="share-panel">
-				<img src="/home/user/Downloads/share.png" id="share_global" />
-			</div>-->
 			<div class="share-panel" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A//aiswaryavi.github.io/project/')">
 				<img src="images/social/facebook.png" />
 			</div>
@@ -106,6 +106,7 @@
 		<script src="js/library/CanvasRenderer.js"></script>
 	        <script src="js/library/Projector.js"></script>
 		<script src="js/library/TrackballControls.js"></script>
+		<script src="js/library/touchevents.js"></script>
 		<script src="js/-cube-code.js">	</script>
 	</body>
 </html>

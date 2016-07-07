@@ -13,10 +13,9 @@
 
 header,
 h1,
-nav,
 section,
 #canvas,
-.toggle-button,
+.canvas-button,
 footer,
 .overlay,
 .popup,
@@ -48,7 +47,7 @@ footer,
 
 html {
 	height:100%;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 body {
@@ -56,15 +55,20 @@ body {
 	min-height: 100%;
 	position: relative;
 	margin: 0;
+	background-color: #111;
 }
 
 header {
 	top: 0;
-	height: 10%;
+	height: 20%;
 	min-width: 200px;
 	
-	background-color: #799;
-	color: #fff;	
+	background-color: #1a8;
+	color: #fff;
+	border-bottom-left-radius: 40%;
+	border-bottom-right-radius: 30%;
+	border-bottom-style: 3px dotted #aaa;
+	z-index: 30;
 }
 
 h1{
@@ -76,16 +80,15 @@ h1{
 	font-size: 3.1vh;
 	font-weight: 300;
 	letter-spacing: 3px;
-	background-color: #564;
+	background-color: #1b9;
 	padding: 1% 3% 1% 3%;
 	border-radius: 10px 1px 10px 1px;
 	text-shadow: -1px 0 #000, 0 2px #000, 2px 0 #333, 0 -2px #222;
 	box-shadow: 8px 5px 20px 8px #333;
 	-webkit-transform: translate(-50%,-50%) rotate(-5deg);
 	transform: translate(-50%,-50%) rotate(-5deg);
-	transition-duration: 0.3s;
 }
-
+/*
 nav {
 	top: 10%;
 	min-height: 4%;
@@ -103,9 +106,10 @@ nav {
 	font-family: eurof55;
 	font-size: 2.5vmin;
 }
-
+*/
 section {
-	bottom: 4%;
+	top: 10%;
+	bottom: 0%;
 
 	background-color: #300;
 }
@@ -117,25 +121,57 @@ section {
 	z-index: 1;
 }
 
-.toggle-button {
+#render {
+/*	background-image: url('/home/user/Downloads/back.jpg');
+	background-size: cover;*/
+}
+
+.canvas-button img {
+	width: 35px;
+	height: 35px;
+}
+
+.canvas-button {
 	display: inline-block;
-	padding: 0px;
-	top: 3%;
-	right: 4%;
+	padding: 2px;
+	right: 5%;
 	
-	opacity: 0.5;
+	background-color: #ddd;
 	outline: none;
 	border: none;
 	border-radius: 3px;
 }
 
+#toggle_button {
+	top: 15%;
+}
+/*
+
+.no-touchevents #help {
+	position: absolute;
+	top: 0%;
+	left: 3%;
+	padding: 1px;
+	display: inline-block;
+
+	background-color: #ddd;
+	border-radius: 3px;
+}
+
+.no-touchevents #help img {
+	width: 35px;
+	height: 35px;
+}
+
+*/
 footer {
 	display: block;
 	bottom: 0;
-	height: 4%;
+	height: 6%;
 	z-index: 3;
-	
-	background-color: #799;
+	opacity: 0.8;
+		
+	background-color: #1a8;
 }
 
 #footer_content {
@@ -268,127 +304,134 @@ footer {
 
 }
 
-@media only screen and (min-width: 800px) {
-	.step-button {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		margin: 0;
-		width: 33.33%;
-	}
-	
-	.step-button:hover {
-		color: #799;
-		cursor: default;
-	}
-	
-	.step-button:hover::after {
-		content: '\00a0}';
-	}
-	
-	.step-button:hover::before {
-		content: '{\00a0';
-	}
-		
-	.step-button:nth-child(2) {
-		transform: translate(100%,0%);
-	}
+/*Device specific styling*/
+/*for devices that do not support touch events*/
 
-	.step-button:nth-child(3) {
-		transform: translate(200%,0%);
-	}
-	
-	section {
-		top: 14%;
-	}
-	
-	#help {
-		position: absolute;
-		top: 0%;
-		left: 3%;
-		padding: 4px;
-		display: inline-block;
-	
-		background-color: #ddd;
-		border-radius: 0px 0px 3px 3px;
-		color: #231;
-		font-size: 120%;
-		font-family: eurof55;
-		text-align: center;
-		text-decoration: underline;
-	}
-
-	#legend {
-		position: absolute;
-		top: 100%;
-		left: 0;
-		padding: 10%;
-		width: 400%;
-	
-		background-color: #ddd;
-		border-radius: 0px 15px 15px 15px;
-		color: #231;
-		opacity: 0;
-		visibility: hidden;
-		transition: opacity 0.5s;
-	}
-
-	#help:hover {
-		cursor: help;
-		text-decoration: none;
-		border-radius: 0px;
-	}
-
-	#help:hover #legend {
-		visibility: visible;
-		opacity: 1;
-		cursor: help;
-	}
-	
-	.toggle-button:hover {
-		opacity: 1;
-		cursor: pointer;
-		-webkit-transition-duration: 0.4s;
-		transition-duration: 0.4s;
-	}
-	
-	.popup .content .close:hover #closeInfo {
-		visibility: visible;
-	}
-	
-	.popup .content .imgnav:hover {
-		opacity: 0.8;
-		cursor: pointer;
-	}
+.no-touchevents .step-button {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: 0;
+	width: 33.33%;
 }
 
-@media only screen and (max-width: 800px) {
-	.step-button {
-		position: absolute;
-		width: 100%;
-		top: 0;
-		bottom: 0;
-	}
-	
-	.step-button:nth-child(odd) {
-		background-color: #dde;
-	}
-	
-	.step-button:nth-child(2) {
-		transform: translate(0%,100%);
-	}
+.no-touchevents .step-button:hover {
+	color: #799;
+	cursor: default;
+}
 
-	.step-button:nth-child(3) {
-		transform: translate(0%,200%);
-	}
-			
-	section {
-		top: 22%;
-	}
-	
-	#help {
-		display: none;
-	}
+.no-touchevents .step-button:hover::before {
+	content: '{\00a0';
+}
+
+.no-touchevents .step-button:hover::after {
+	content: '\00a0}';
+}
+
+.no-touchevents .step-button:nth-child(2) {
+	transform: translate(100%,0%);
+}
+
+.no-touchevents .step-button:nth-child(3) {
+	transform: translate(200%,0%);
+}
+
+.no-touchevents #help {
+	position: absolute;
+	top: calc(15% + 50px);
+}
+/*	left: 3%;
+	padding: 1px;
+	display: inline-block;
+
+	background-color: #ddd;
+	border-radius: 3px;
+}
+
+.no-touchevents #help img {
+	width: 35px;
+	height: 35px;
+}
+*/
+.no-touchevents #legend {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	padding: 10%;
+	width: 400%;
+
+	background-color: #ddd;
+	border-radius: 15px 0px 15px 15px;
+	color: #231;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.5s;
+}
+
+.no-touchevents #help:hover {
+	border-radius: 3px 3px 0px 0px;
+}
+
+.no-touchevents #help:hover #legend {
+	visibility: visible;
+	opacity: 1;
+}
+
+.no-touchevents #toggle_button:hover {
+	cursor: pointer;
+}
+
+.no-touchevents .canvas-button {
+	opacity: 0.5;
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+
+.no-touchevents .canvas-button:hover {
+	opacity: 1;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	-webkit-filter: none;
+	filter: none;
+}
+
+.no-touchevents .popup .content .close:hover #closeInfo {
+	visibility: visible;
+}
+
+.no-touchevents .popup .content .imgnav:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+/*for devices that support touch events*/
+/*
+.touchevents .step-button {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+}
+
+.touchevents .step-button:nth-child(odd) {
+	background-color: #dde;
+}
+
+.touchevents .step-button:nth-child(2) {
+	transform: translate(0%,100%);
+}
+
+.touchevents .step-button:nth-child(3) {
+	transform: translate(0%,200%);
+}
+*/
+
+.touchevents #help {
+	display: none;
+}
+
+.touchevents #share_desktop {
+	display: none;
 }
 
 /*share button*/
@@ -415,6 +458,7 @@ footer {
 }
 
 .share-panel img {
+	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%);
 	position: absolute;
 	right: 3%;
@@ -430,5 +474,6 @@ footer {
 }
 
 .share-panel:hover img {
+	-webkit-filter: none;
 	filter: none;
 }

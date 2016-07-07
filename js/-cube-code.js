@@ -12,17 +12,12 @@ var rotating=true;
 var R_WIDTH, R_HEIGHT;
 var im=["images/cube1.jpg","images/cube2.jpg","images/cube3.jpg","images/cube4.jpg","images/cube5.jpg","images/cube6.jpg"];
 
-//webglAvailable();
-
 init();
 
 function init() {
 
-
 	//to create container inside which the 3D scene is rendered
 	container = document.getElementById("canvas");
-//	container.style.width = window.innerWidth + "px";
-//	container.style.height = window.innerHeight + "px";
 
 	//definition of renderer
 	
@@ -32,7 +27,7 @@ function init() {
 
 	webglAvailable();
 	if ( webglAvailable() ) {
-		renderer = new THREE.WebGLRenderer();
+		renderer = new THREE.WebGLRenderer({ alpha : false });
 	} else {
 		renderer = new THREE.CanvasRenderer();
 	}
@@ -40,34 +35,14 @@ function init() {
 	//renderer = new THREE.WebGLRenderer();
 	renderer.domElement.setAttribute("id","render");
 	renderer.setSize( R_WIDTH, R_HEIGHT );
-	renderer.setClearColor( 0x283018 );
+	renderer.setClearColor( 0x1abc9c );
 	renderer.setPixelRatio( window.devicePixelRatio );
 
 	//to create "help" bar
-//	var legend = document.createElement('div');
-//	legend.setAttribute("id","legend");
-//	legend.innerHTML = "<code><p align='left' style='margin-left: 4px'>Drag&nbsp;:&nbsp;Rotate<br>Scroll&nbsp;:&nbsp;Zoom&nbsp;In/Out<br>Click on a face to upload photo</p></code>";
-
-//	var help = document.createElement('div');
-//	help.setAttribute("id","help");
-//	help.innerHTML = "<code>Help</code>";
-//	help.appendChild(legend);
-
-	//to create start/stop button
-	playButton = document.createElement('button');
-	
-	playButton.setAttribute("onclick","toggle()");
-	playButton.setAttribute("class","toggle-button");
-	playButton.innerHTML = "<img src='images/extras/rotation.png' width='20px' height='20px' />"
 
 	container.appendChild( renderer.domElement );
-//	container.appendChild( help );
-	container.appendChild( playButton );
 
-	/*share button
-	var share = document.getElementById("share");
-	share.setAttribute("onclick","window.open('https://plus.google.com/share?url=https%3A//aiswaryavi.github.io/project/')");
-	*/
+	playButton = document.getElementById("toggle_button");
 
 	//to restrict image size
 	document.getElementById("image").style.maxWidth = 0.7*window.innerWidth + "px";
@@ -131,9 +106,9 @@ function toggle() {
 	//to toggle rotation on/off
 	rotating = !rotating;
 	if(!rotating)
-		playButton.innerHTML = "<img src='images/extras/rotation_off.png' width='20px' height='20px' />";
+		playButton.innerHTML = "<img src='images/extras/rotation_off.png' />";
 	else
-		playButton.innerHTML = "<img src='images/extras/rotation.png' width='20px' height='20px' />"
+		playButton.innerHTML = "<img src='images/extras/rotation.png' />"
 }
 
 function onDocumentMouseDown( event ) {
@@ -234,13 +209,37 @@ function onWindowResize(){
 }
 
 function webglAvailable() {
-		try {
-			var canvas = document.createElement( 'canvas' );
-			return !!( window.WebGLRenderingContext && (
-				canvas.getContext( 'webgl' ) ||
-				canvas.getContext( 'experimental-webgl' ) )
+	try {
+		var canvas = document.createElement( 'canvas' );
+		return !!( window.WebGLRenderingContext && (
+			canvas.getContext( 'webgl' ) ||
+			canvas.getContext( 'experimental-webgl' ) )
 			);
-		} catch ( e ) {
-			return false;
-		}
+	} catch ( e ) {
+		return false;
 	}
+}
+
+
+/*
+	function makePowerOfTwo( image ) {
+
+		if ( image instanceof HTMLImageElement || image instanceof HTMLCanvasElement ) {
+
+			var canvas = document.createElementNS( 'http://www.w3.org/1999/xhtml', 'canvas' );
+			canvas.width = THREE.Math.nearestPowerOfTwo( image.width );
+			canvas.height = THREE.Math.nearestPowerOfTwo( image.height );
+
+			var context = canvas.getContext( '2d' );
+			context.drawImage( image, 0, 0, canvas.width, canvas.height );
+
+			console.warn( 'THREE.WebGLRenderer: image is not power of two (' + image.width + 'x' + image.height + '). Resized to ' + canvas.width + 'x' + canvas.height, image );
+
+			return canvas;
+
+		}
+
+		return image;
+
+	}
+*/
