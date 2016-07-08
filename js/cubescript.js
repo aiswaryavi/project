@@ -14,6 +14,7 @@ var im=["images/cube1.jpg","images/cube2.jpg","images/cube3.jpg","images/cube4.j
 
 init();
 
+/*	init() function	*/
 function init() {
 
 	//to create container inside which the 3D scene is rendered
@@ -31,8 +32,6 @@ function init() {
 	} else {
 		renderer = new THREE.CanvasRenderer();
 	}
-
-	//renderer = new THREE.WebGLRenderer();
 	renderer.domElement.setAttribute("id","render");
 	renderer.setSize( R_WIDTH, R_HEIGHT );
 	renderer.setClearColor( 0x1abc9c );
@@ -44,7 +43,7 @@ function init() {
 
 	playButton = document.getElementById("toggle_button");
 
-	//to restrict image size
+	//to restrict size of pop-up image
 	document.getElementById("image").style.maxWidth = 0.7*window.innerWidth + "px";
 	document.getElementById("image").style.maxHeight = 0.7*window.innerHeight + "px";
 	document.getElementById("popup1").style.zIndex = "1000";
@@ -54,7 +53,6 @@ function init() {
 	var ord = 300;
 	camera = new THREE.PerspectiveCamera( 45, R_WIDTH / R_HEIGHT , 1, 1000 );
 	camera.position.set( ord, ord, ord);
-	console.log(R_WIDTH,R_HEIGHT);
 
 	controls = new THREE.TrackballControls( camera, renderer.domElement );
 	controls.minDistance = 275;
@@ -69,10 +67,10 @@ function init() {
 	window.addEventListener( 'resize', onWindowResize, false );
 }
 
+/*	Function to render the cube with images on each face	*/
 function cubeRender( ){
 	scene.add( new THREE.AmbientLight( 0xffffff ) );
 
-	//to create the cube
 	var geometry = new THREE.BoxGeometry( 150, 150, 150 );
 
 	var materials = [];
@@ -90,11 +88,12 @@ function cubeRender( ){
 	renderer.domElement.addEventListener( 'click', onDocumentMouseDown, false );
 }
 
+/*	Function to animate the scene	*/
 function animate() {
-	//function to animate the scene
+
 	requestAnimationFrame( animate );
 
-	if(rotating==true){
+	if(rotating){
 		mesh.rotation.x += 0.01;
 		mesh.rotation.y += 0.02;
 	}
@@ -102,15 +101,16 @@ function animate() {
 	renderer.render(scene,camera);
 }
 
+/*	Function to toggle cube rotation on/off	*/
 function toggle() {
-	//to toggle rotation on/off
 	rotating = !rotating;
-	if(!rotating)
-		playButton.innerHTML = "<img src='images/extras/rotation_off.png' />";
+	if(rotating)
+		playButton.innerHTML = "<img src='images/extras/rotation.png' />";
 	else
-		playButton.innerHTML = "<img src='images/extras/rotation.png' />"
+		playButton.innerHTML = "<img src='images/extras/rotation_off.png' />";
 }
 
+/*	Function to handle face click event	*/
 function onDocumentMouseDown( event ) {
 	var raycaster = new THREE.Raycaster();
 
@@ -125,11 +125,12 @@ function onDocumentMouseDown( event ) {
 		newpop1();
    	}
 }
-	
+
+/*	Function to load the URL of uploaded image and display it on the pop-up	*/
 function loadFile(event) {
 	var output = document.getElementById('image');
 	output.src = URL.createObjectURL(event.target.files[0]);
-	//if(document.getElementById('browse').value)
+	
 	document.getElementById("upload").disabled=false;
 
 	if (!event.target.files[0].name.match(/\.(bmp|tiff|jpg|jpeg|png|gif)$/)) {
@@ -137,13 +138,11 @@ function loadFile(event) {
 	    	closePopup();
 	}
 	blobUrl=output.src;
-	//to enable "upload" button
-	
 }
 
+/*	Function to open the pop-up modal	*/
 function newpop1()
 {
-	//location.href = "#popup1";
 	var overlay = document.getElementById("popup1");
 	overlay.style.transform = "scale(1)";
 	overlay.style.visibility = "visible";
@@ -151,6 +150,7 @@ function newpop1()
 	document.getElementById("image").src = im[curr_index];
 }
 
+/*	Function to load the image onto the face of the cube	*/
 function uploadFunc() {
 	newscene();
 	im[curr_index] = blobUrl;
@@ -161,9 +161,8 @@ function uploadFunc() {
 	document.getElementById("upload").disabled=true;
 }
 
+/*	Function to close the pop-up modal	*/
 function closePopup() {
-	//location.href = "#";
-	//to disable "upload" button
 	var overlay = document.getElementById("popup1");
 	overlay.style.transform = "scale(0)";
 	overlay.style.visibility = "hidden";
@@ -171,11 +170,13 @@ function closePopup() {
 	document.getElementById("upload").disabled=true;
 }
 
+/*	Function to create new scene	*/
 function newscene() {
 	scene = new THREE.Scene();	
 }
 
-function changeImageP(){
+/* Functions prevImage() and nextImage() to navigate the image gallery on the pop-up	*/
+function prevImage(){
 	
 	curr_index-=1;
 	if(curr_index==-1){
@@ -185,9 +186,7 @@ function changeImageP(){
 
 }
 
-function changeImageN(){
-	
-	//index_val=curr_index;
+function nextImage(){
 	curr_index+=1;
 	if(curr_index==6){
 		curr_index=0;
@@ -196,8 +195,8 @@ function changeImageN(){
 
 }
 
+/*	Function to handle the window resize event	*/
 function onWindowResize(){
-
 	var containerInfo = container.getBoundingClientRect();
 	R_WIDTH = containerInfo.width;
 	R_HEIGHT = containerInfo.height;
@@ -208,6 +207,7 @@ function onWindowResize(){
 	renderer.setSize( R_WIDTH, R_HEIGHT );
 }
 
+/*	Function to detect support for WebGL renderer	*/
 function webglAvailable() {
 	try {
 		var canvas = document.createElement( 'canvas' );
@@ -220,26 +220,6 @@ function webglAvailable() {
 	}
 }
 
-
-/*
-	function makePowerOfTwo( image ) {
-
-		if ( image instanceof HTMLImageElement || image instanceof HTMLCanvasElement ) {
-
-			var canvas = document.createElementNS( 'http://www.w3.org/1999/xhtml', 'canvas' );
-			canvas.width = THREE.Math.nearestPowerOfTwo( image.width );
-			canvas.height = THREE.Math.nearestPowerOfTwo( image.height );
-
-			var context = canvas.getContext( '2d' );
-			context.drawImage( image, 0, 0, canvas.width, canvas.height );
-
-			console.warn( 'THREE.WebGLRenderer: image is not power of two (' + image.width + 'x' + image.height + '). Resized to ' + canvas.width + 'x' + canvas.height, image );
-
-			return canvas;
-
-		}
-
-		return image;
-
-	}
-*/
+/*/////////////////////////////////////////////////////////////
+			END OF SCRIPT
+//////////////////////////////////////////////////////////////*/

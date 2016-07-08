@@ -1,16 +1,19 @@
-/*
-	CSS stylesheet for index.html and any subsequent pages, if any.
-*/
+/*/////////////////////////////////////////
+	CSS stylesheet for index.html
+//////////////////////////////////////////*/
+
+/*	Importing font: eurof55		*/
 @font-face {
 	font-family: eurof55;
 	src: url('fonts/eurof55.ttf') format('truetype');
 }
-
+/*	Importing font: Powerweld	*/
 @font-face {
 	font-family: Powerweld;
 	src: url('fonts/Powerweld.ttf') format('truetype');
 }
 
+/* 	Common styling 			*/
 header,
 h1,
 section,
@@ -42,9 +45,11 @@ footer,
 	top: 50%;
 	left: 50%;
 	-webkit-transform: translate(-50%,-50%);
-	transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	        transform: translate(-50%,-50%);
 }
 
+/* 	Beginning of individual styling 	*/
 html {
 	height:100%;
 	overflow: hidden;
@@ -61,13 +66,10 @@ body {
 header {
 	top: 0;
 	height: 20%;
-	min-width: 200px;
-	
 	background-color: #1a8;
 	color: #fff;
 	border-bottom-left-radius: 40%;
 	border-bottom-right-radius: 30%;
-	border-bottom-style: 3px dotted #aaa;
 	z-index: 30;
 }
 
@@ -75,7 +77,6 @@ h1{
 	margin: 0;
 	top: 50%;
 	left: 50%;
-	
 	font-family: Powerweld;
 	font-size: 3.1vh;
 	font-weight: 300;
@@ -86,44 +87,19 @@ h1{
 	text-shadow: -1px 0 #000, 0 2px #000, 2px 0 #333, 0 -2px #222;
 	box-shadow: 8px 5px 20px 8px #333;
 	-webkit-transform: translate(-50%,-50%) rotate(-5deg);
-	transform: translate(-50%,-50%) rotate(-5deg);
-}
-/*
-nav {
-	top: 10%;
-	min-height: 4%;
+	    -ms-transform: translate(-50%,-50%) rotate(-5deg);
+	        transform: translate(-50%,-50%) rotate(-5deg);
 }
 
-.step-button {
-	display: flex;
-	box-sizing: border-box;
-	align-items: center;
-	justify-content: center;
-
-	
-	background-color: #eef;
-	color: #000;
-	font-family: eurof55;
-	font-size: 2.5vmin;
-}
-*/
 section {
 	top: 10%;
 	bottom: 0%;
-
-	background-color: #300;
 }
 
 #canvas {
-	background-color: #231;
 	height: 100%;
 	width: 100%;
 	z-index: 1;
-}
-
-#render {
-/*	background-image: url('/home/user/Downloads/back.jpg');
-	background-size: cover;*/
 }
 
 .canvas-button img {
@@ -145,25 +121,7 @@ section {
 #toggle_button {
 	top: 15%;
 }
-/*
 
-.no-touchevents #help {
-	position: absolute;
-	top: 0%;
-	left: 3%;
-	padding: 1px;
-	display: inline-block;
-
-	background-color: #ddd;
-	border-radius: 3px;
-}
-
-.no-touchevents #help img {
-	width: 35px;
-	height: 35px;
-}
-
-*/
 footer {
 	display: block;
 	bottom: 0;
@@ -181,43 +139,36 @@ footer {
 	text-shadow: 0.1em 0.1em #222;
 }
 
-/* styling for the pop-up*/
+/* 	Styling for the pop-up modal 	*/
 
 .overlay {
 	top: 0;
 	bottom: 0;
-	
 	background: transparent;
 	-webkit-transform: scale(0);
-	transform: scale(0);
+	    -ms-transform: scale(0);
+		transform: scale(0);
 	-webkit-transition: transform 0.5s, opacity 0.5s;
-	transition: transform 0.5s, opacity 0.5s;
+	    -ms-transition: transform 0.5s, opacity 0.5s;
+		transition: transform 0.5s, opacity 0.5s;
 	visibility: hidden;
 	opacity: 0;
 }
-/* 
-.overlay:target {
-	-webkit-transform: scale(1);
-	transform: scale(1);
-	visibility: visible;
-	opacity: 1;
-}
-*/
+
 .popup {
 	display: inline-block;
 	padding: 1%;
 	max-width: 90%;
 	max-height: 90%;
-	
 	background-color: #eee;
 	border-radius: 5px;
 	-webkit-transition: all 5s ease-in-out;
-	transition: all 5s ease-in-out;
+	    -ms-transition: all 5s ease-in-out;
+		transition: all 5s ease-in-out;
 }
 
 .popup h2 {
 	margin-top: 1%;
-
 	color: #444;
 	font-family: Tahoma, Arial, sans-serif;
 	font-size: 1.3vmax;
@@ -226,9 +177,10 @@ footer {
 .popup .content .close {
 	top: 0.5%;
 	right: 1%;
-
 	opacity: 0.5;
-	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	    -ms-transition: all 0.5s;
+		transition: all 0.5s;
 }
 
 .popup .content .close:hover {
@@ -241,7 +193,6 @@ footer {
 	bottom: 0%;
 	right: 100%;
 	visibility: hidden;
-
 	color: #fff;
 	font-size: 90%;
 	background-color: #333;
@@ -255,12 +206,16 @@ footer {
 	width: 100%;
 }
 
-.popup .content #imageBox {
+.popup .content #image_box {
 	display: inline-block;
 	position: relative;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+		transform: translateX(-50%);
 }
 
-.popup .content #imageBox #image {
+.popup .content #image_box #image {
 	float: left;
 }
 
@@ -271,17 +226,21 @@ footer {
 	top: 0;
 	bottom: 0;
 	opacity: 0.3;
-	transition: opacity 0.3s;
+	-webkit-transition: opacity 0.3s;
+	    -ms-transition: opacity 0.3s;
+		transition: opacity 0.3s;
 }
 
 .popup .content .imgnav img {
 	width: 100%;
 	top: 50%;
-	transform: translate(0,-50%);
+	-webkit-transform: translate(0,-50%);
+	    -ms-transform: translate(0,-50%);
+		transform: translate(0,-50%);
 }
 
 .popup .content #prev {
-	left: 0%;
+	left: 0;
 }
 
 .popup .content #next {
@@ -300,76 +259,82 @@ footer {
 
 .popup input[type="file"] {
 	color: transparent;
-	max-width: 115px;
-
+	max-width: 105px;
 }
 
-/*Device specific styling*/
-/*for devices that do not support touch events*/
-
-.no-touchevents .step-button {
-	position: absolute;
-	top: 0;
+/*	Share button for desktop	*/
+#share_desktop {
+	position: fixed;
+	left: -11%;
 	bottom: 0;
-	margin: 0;
-	width: 33.33%;
+	height: 30%;
+	width: 18%;
+	z-index: 1070;
 }
 
-.no-touchevents .step-button:hover {
-	color: #799;
-	cursor: default;
+.share-panel {
+	position: relative;
+	top: 8%;
+	left: -20%;
+	margin: 3% 0 3% 0;
+	height: 18%;
+	width: 100%;
+	border-radius: 10px;
+	background-color: #ddd;
+	-webkit-transition-duration: 0.3s;
+	    -ms-transition-duration: 0.3s;
+		transition-duration: 0.3s;
 }
 
-.no-touchevents .step-button:hover::before {
-	content: '{\00a0';
+.share-panel img {
+	-webkit-filter: grayscale(100%);
+		filter: grayscale(100%);
+	position: absolute;
+	right: 3%;
+	top: 50%;
+	height: 70%;
+	-webkit-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+		transform: translateY(-50%);
 }
 
-.no-touchevents .step-button:hover::after {
-	content: '\00a0}';
+.share-panel:hover {
+	left: 0;
+	cursor: pointer;
+	background-color: #fff;
 }
 
-.no-touchevents .step-button:nth-child(2) {
-	transform: translate(100%,0%);
+.share-panel:hover img {
+	-webkit-filter: none;
+	filter: none;
 }
 
-.no-touchevents .step-button:nth-child(3) {
-	transform: translate(200%,0%);
-}
+/*	Device specific styling			*/
 
+/*	For devices that do not support touch events	*/
 .no-touchevents #help {
 	position: absolute;
 	top: calc(15% + 50px);
 }
-/*	left: 3%;
-	padding: 1px;
-	display: inline-block;
 
-	background-color: #ddd;
-	border-radius: 3px;
-}
-
-.no-touchevents #help img {
-	width: 35px;
-	height: 35px;
-}
-*/
 .no-touchevents #legend {
 	position: absolute;
 	top: 100%;
 	right: 0;
 	padding: 10%;
 	width: 400%;
-
 	background-color: #ddd;
-	border-radius: 15px 0px 15px 15px;
+	border-radius: 15px 0 15px 15px;
 	color: #231;
 	opacity: 0;
 	visibility: hidden;
-	transition: opacity 0.5s;
+	-webkit-transition: opacity 0.5s;
+	    -ms-transition: opacity 0.5s;
+		transition: opacity 0.5s;
 }
 
 .no-touchevents #help:hover {
-	border-radius: 3px 3px 0px 0px;
+	border-radius: 3px 3px 0 0;
 }
 
 .no-touchevents #help:hover #legend {
@@ -390,9 +355,10 @@ footer {
 .no-touchevents .canvas-button:hover {
 	opacity: 1;
 	-webkit-transition-duration: 0.4s;
-	transition-duration: 0.4s;
+	    -ms-transition-duration: 0.4s;
+		transition-duration: 0.4s;
 	-webkit-filter: none;
-	filter: none;
+		filter: none;
 }
 
 .no-touchevents .popup .content .close:hover #closeInfo {
@@ -404,28 +370,7 @@ footer {
 	cursor: pointer;
 }
 
-/*for devices that support touch events*/
-/*
-.touchevents .step-button {
-	position: absolute;
-	width: 100%;
-	top: 0;
-	bottom: 0;
-}
-
-.touchevents .step-button:nth-child(odd) {
-	background-color: #dde;
-}
-
-.touchevents .step-button:nth-child(2) {
-	transform: translate(0%,100%);
-}
-
-.touchevents .step-button:nth-child(3) {
-	transform: translate(0%,200%);
-}
-*/
-
+/*	For devices that support touch events	*/
 .touchevents #help {
 	display: none;
 }
@@ -434,46 +379,6 @@ footer {
 	display: none;
 }
 
-/*share button*/
-
-#share_desktop {
-	position: fixed;
-	left: -11%;
-	bottom: 0%;
-	height: 30%;
-	width: 18%;
-	z-index: 1070;
-}
-
-.share-panel {
-	position: relative;
-	top: 8%;
-	left: -20%;
-	margin: 3% 0% 3% 0%;
-	height: 18%;
-	width: 100%;
-	border-radius: 10px;
-	background-color: #ddd;
-	transition-duration: 0.3s;
-}
-
-.share-panel img {
-	-webkit-filter: grayscale(100%);
-	filter: grayscale(100%);
-	position: absolute;
-	right: 3%;
-	top: 50%;
-	height: 70%;
-	transform: translateY(-50%);
-}
-
-.share-panel:hover {
-	left: 0%;
-	cursor: pointer;
-	background-color: #fff;
-}
-
-.share-panel:hover img {
-	-webkit-filter: none;
-	filter: none;
-}
+/*/////////////////////////////////////////////////
+		End of stylesheet
+/////////////////////////////////////////////////*/
