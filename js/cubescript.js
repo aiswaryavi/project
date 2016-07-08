@@ -6,6 +6,7 @@ var container;
 var playButton;
 var camera, scene, renderer, controls;
 var mesh;
+var rx=0,ry=0;
 var blobUrl;
 var curr_index=0;
 var rotating=true;
@@ -83,7 +84,8 @@ function cubeRender( ){
 	mesh = new THREE.Mesh( geometry, material );
 
 	scene.add( mesh );
-	mesh.position.set(0,0,0);
+	mesh.rotation.set(rx,ry,0);
+	
 	renderer.render(scene,camera);
 	renderer.domElement.addEventListener( 'click', onDocumentMouseDown, false );
 }
@@ -97,6 +99,8 @@ function animate() {
 		mesh.rotation.x += 0.01;
 		mesh.rotation.y += 0.02;
 	}
+	rx=mesh.rotation.x;
+	ry=mesh.rotation.y;
 	controls.update();
 	renderer.render(scene,camera);
 }
@@ -143,6 +147,9 @@ function loadFile(event) {
 /*	Function to open the pop-up modal	*/
 function newpop1()
 {
+	rotating=false;
+	playButton.innerHTML = "<img src='images/extras/rotation_off.png' />";
+	
 	var overlay = document.getElementById("popup1");
 	overlay.style.transform = "scale(1)";
 	overlay.style.visibility = "visible";
