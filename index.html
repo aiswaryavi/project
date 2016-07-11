@@ -15,7 +15,7 @@
 			<div id="canvas">
 				<button class="canvas-button sprite" id="help">
 					<div id="legend">
-						<p align='left' style='margin-left: 4px'>
+						<p>
 							Drag : Rotate<br>
 							Scroll : Zoom In/Out<br>
 							Click on a face to upload photo
@@ -59,7 +59,9 @@
 							<td>
 								<div class="button-section">
 									<form autocomplete="off">
-										<input type="file" id="browse" onchange="loadFile(event)">
+										<label class="file-input">
+											<input type="file" id="browse" onchange="loadFile(event)">
+										</label>
 										<input type="button" value="Done" onclick ="closePopup()">
 										<input type="button" id="upload" value="Upload" onclick ="uploadFunc()" disabled=true>
 									</form>

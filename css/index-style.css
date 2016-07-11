@@ -284,9 +284,55 @@ footer {
 	display: inline-block;
 }
 
+.file-input {
+	display: inline-block;
+	position: relative;
+	color: #fff;
+}
+
+.file-input input {
+	visibility: hidden;
+	width: 80px;
+}
+
+.file-input:before {
+	content: 'Browse..';
+	position: absolute;
+	left: 0;
+	right: 0;
+	display: block;
+	background-color: #049;
+	border: 1px solid #06d;
+	border-radius: 5px;
+	padding: 5px 0px;
+	outline: none;
+	
+	cursor: pointer;
+	text-align: center;
+	font-size: 13px;
+	font-family: sans-serif;
+}
+
 .popup .content .button-section input[type="button"] {
 	float: right;
 	margin-left: 1%;
+	
+	background-color: #049;
+	color: #fff;
+	border: 0;
+	border-radius: 5px;
+	padding: 5px;
+	outline: none;
+	text-align: center;
+	font-size: 13px;
+	font-family: sans-serif;
+	cursor: pointer;
+}
+
+.popup .content .button-section input[type="button"]:disabled {
+	background-color: #79c;
+	cursor: default;
+	opacity: 0.7;
 }
 
 .popup input[type="file"] {
@@ -367,7 +413,7 @@ footer {
 	position: absolute;
 	top: calc(100% + 3px);
 	right: -3px;
-	padding: 10%;
+	padding: 15%;
 	width: 400%;
 	background-color: #ddd;
 	border-radius: 15px 0 15px 15px;
@@ -387,6 +433,16 @@ footer {
 .no-touchevents #help:hover #legend {
 	display: initial;
 	opacity: 1;
+}
+
+.no-touchevents #help #legend p {
+	display: none;
+}
+
+.no-touchevents #help:hover #legend p {
+	display: initial;
+	margin-left: 4px;
+	align: left;
 }
 
 .no-touchevents .canvas-button {
@@ -412,6 +468,19 @@ footer {
 .no-touchevents .popup .content .imgnav:hover {
 	opacity: 0.8;
 	cursor: pointer;
+}
+
+.no-touchevents .popup .file-input:hover:before {
+	background-color: #06c;
+}
+
+.no-touchevents .popup .content .button-section input[type="button"]:disabled:hover {
+	background-color: #79c;
+	opacity: 0.7;
+}
+
+.no-touchevents .popup .content .button-section input[type="button"]:hover {
+	background-color: #06c;
 }
 
 /*	For devices that support touch events	*/
