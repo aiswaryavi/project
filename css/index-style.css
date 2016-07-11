@@ -49,6 +49,10 @@ footer,
 	        transform: translate(-50%,-50%);
 }
 
+.sprite {
+	background: url('sprites/sprites.png') no-repeat;
+}
+
 /* 	Beginning of individual styling 	*/
 html {
 	height:100%;
@@ -108,7 +112,6 @@ section {
 	width: 35px;
 	height: 35px;
 	
-	background: url('sprites/buttons.png') no-repeat;
 	background-color: #ddd;
 	box-sizing: content-box;
 	outline: 0;
@@ -123,7 +126,7 @@ section {
 
 #r_off{
 	display: none;
-	background-position: -40px 0;
+	background-position: -42px 0;
 }
 
 #toggle_button {
@@ -183,12 +186,18 @@ footer {
 }
 
 .popup .content .close {
-	top: 0.5%;
-	right: 1%;
+	top: 1%;
+	right: 0;
 	opacity: 0.5;
 	-webkit-transition: all 0.5s;
 	    -ms-transition: all 0.5s;
 		transition: all 0.5s;
+}
+
+#close_sprite {
+	background-position: -4px -97px;
+	width: 15px;
+	height: 15px;
 }
 
 .popup .content .close:hover {
@@ -204,7 +213,7 @@ footer {
 	color: #fff;
 	font-size: 90%;
 	background-color: #333;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 .popup .content {
@@ -231,6 +240,7 @@ footer {
 	background-color: #ccc;
 	height: 100%;
 	width: 10%;
+	min-width: 31px;
 	top: 0;
 	bottom: 0;
 	opacity: 0.3;
@@ -239,20 +249,34 @@ footer {
 		transition: opacity 0.3s;
 }
 
-.popup .content .imgnav img {
-	width: 100%;
-	top: 50%;
-	-webkit-transform: translate(0,-50%);
-	    -ms-transform: translate(0,-50%);
-		transform: translate(0,-50%);
-}
-
 .popup .content #prev {
 	left: 0;
 }
 
 .popup .content #next {
 	right: 0;
+}
+
+.img-btn {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	overflow: hidden;
+	-webkit-transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+		transform: translate(-50%,-50%);
+}
+
+#prev_sprite {
+	background-position: -62px -99px;
+	width: 30px;
+	height: 30px;
+}
+
+#next_sprite {
+	background-position: -28px -98px;
+	width: 30px;
+	height: 30px;
 }
 
 .popup .content .button-section {
@@ -303,22 +327,20 @@ footer {
 	-webkit-transform: translateY(-50%);
 	    -ms-transform: translateY(-50%);
 		transform: translateY(-50%);
-		
-	background: url('sprites/social.png') no-repeat;
 	height: 32px;
 	width: 32px;
 }
 
 #fb{
-	background-position: 0 0;
+	background-position: -1px -48px;
 }
 
 #gp{
-	background-position: -38px 0;
+	background-position: -40px -48px;
 }
 
 #tw{
-	background-position: -78px 0;
+	background-position: -81px -48px;
 }
 
 .share-panel:hover {
@@ -338,7 +360,7 @@ footer {
 .no-touchevents #help {
 	position: absolute;
 	top: calc(15% + 50px);
-	background-position: -80px 0;
+	background-position: -87px 0;
 }
 
 .no-touchevents #legend {

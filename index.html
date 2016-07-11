@@ -7,13 +7,13 @@
 		<link rel="stylesheet" href="css/index-style.css">
 	</head>
 
-	<body onload="closePopup()">
+	<body>
 		<header>
 			<h1>SnapCube</h1>
 		</header>
 		<section>
 			<div id="canvas">
-				<button class="canvas-button" id="help">
+				<button class="canvas-button sprite" id="help">
 					<div id="legend">
 						<p align='left' style='margin-left: 4px'>
 							Drag : Rotate<br>
@@ -22,9 +22,9 @@
 						</p>
 					</div>	<!-- #legend -->
 				</button>
-				<button class="canvas-button" id="r_on" onclick="toggle()" >
+				<button class="canvas-button sprite" id="r_on" onclick="toggle()" >
 				</button>
-				<button class="canvas-button" id="r_off" onclick="toggle()" >
+				<button class="canvas-button sprite" id="r_off" onclick="toggle()" >
 				</button>
 			</div>	<!-- .canvas -->
 		</section>
@@ -35,7 +35,7 @@
 					<h2>UPLOAD PHOTO</h2>
 					<div class="close">
 						<a onclick="closePopup()">
-							<img src="images/extras/close.png" height="15" width="15">
+							<div id="close_sprite" class="sprite"></div>
 						</a>
 						<div id="close_info">
 							Close
@@ -45,12 +45,12 @@
 						<tr>
 							<td>
 								<div id="image_box">
-									<img id="image" src="images/cube1.jpg" alt="No Image">
+									<img id="image" alt="No Image">
 									<div class="imgnav" id="prev" onclick ="prevImage()">
-										<img src="images/extras/prev.png">
+										<div id="prev_sprite" class="sprite img-btn"></div>
 									</div>	<!-- #prev -->
 									<div class="imgnav" id="next" onclick ="nextImage()">
-										<img src="images/extras/next.png">
+										<div id="next_sprite" class="sprite img-btn"></div>
 									</div>	<!-- #next -->
 								</div>	<!-- #image_box -->
 							</td>
@@ -73,13 +73,13 @@
 		<!-- Share Button -->
 		<div id="share_desktop">
 			<div class="share-panel" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A//aiswaryavi.github.io/project/')">
-				<div class="share-pic" id="fb"></div>
+				<div class="share-pic sprite" id="fb"></div>
 			</div>	<!-- .share-panel -->
 			<div class="share-panel" onclick="window.open('https://plus.google.com/share?url=https%3A//aiswaryavi.github.io/project/')">
-				<div class="share-pic" id="gp"></div>
+				<div class="share-pic sprite" id="gp"></div>
 			</div>	<!-- .share-panel -->
 			<div class="share-panel" onclick="window.open('https://twitter.com/home?status=https%3A//aiswaryavi.github.io/project/')">
-				<div class="share-pic" id="tw"></div>
+				<div class="share-pic sprite" id="tw"></div>
 			</div>	<!-- .share-panel -->
 		</div>	<!-- #share_desktop -->
 		<footer>

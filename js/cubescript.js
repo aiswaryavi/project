@@ -11,8 +11,8 @@ var	container,
 	curr_index=0,
 	rotating=true,
 	R_WIDTH, R_HEIGHT,
-	imprefix="images/";
-	im=["images/cube1.jpg","images/cube2.jpg","images/cube3.jpg","images/cube4.jpg","images/cube5.jpg","images/cube6.jpg"];
+	imprefix="images/cube";
+	im=[imprefix+"1.jpg",imprefix+"2.jpg",imprefix+"3.jpg",imprefix+"4.jpg",imprefix+"5.jpg",imprefix+"6.jpg"];
 
 init();
 
