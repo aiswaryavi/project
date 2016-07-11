@@ -2,16 +2,17 @@
 	JavaScript code to view and rotate the cube
 */
 
-var container;
-var playButton;
-var camera, scene, renderer, controls;
-var mesh;
-var rx=0,ry=0;
-var blobUrl;
-var curr_index=0;
-var rotating=true;
-var R_WIDTH, R_HEIGHT;
-var im=["images/cube1.jpg","images/cube2.jpg","images/cube3.jpg","images/cube4.jpg","images/cube5.jpg","images/cube6.jpg"];
+var	container,
+	playButtonOn, playButtonOff,
+	camera, scene, renderer, controls,
+	mesh,
+	rx=0,ry=0,
+	blobUrl,
+	curr_index=0,
+	rotating=true,
+	R_WIDTH, R_HEIGHT,
+	imprefix="images/";
+	im=["images/cube1.jpg","images/cube2.jpg","images/cube3.jpg","images/cube4.jpg","images/cube5.jpg","images/cube6.jpg"];
 
 init();
 
@@ -42,7 +43,8 @@ function init() {
 
 	container.appendChild( renderer.domElement );
 
-	playButton = document.getElementById("toggle_button");
+	playButtonOn = document.getElementById("r_on");
+	playButtonOff = document.getElementById("r_off");
 
 	//to restrict size of pop-up image
 	document.getElementById("image").style.maxWidth = 0.7*window.innerWidth + "px";
@@ -108,10 +110,14 @@ function animate() {
 /*	Function to toggle cube rotation on/off	*/
 function toggle() {
 	rotating = !rotating;
-	if(rotating)
-		playButton.innerHTML = "<img src='images/extras/rotation.png' />";
-	else
-		playButton.innerHTML = "<img src='images/extras/rotation_off.png' />";
+	if(rotating){
+		playButtonOff.style.display = "none";
+		playButtonOn.style.display = "initial";
+	}
+	else{
+		playButtonOn.style.display = "none";
+		playButtonOff.style.display = "initial";
+	}
 }
 
 /*	Function to handle face click event	*/
@@ -148,7 +154,8 @@ function loadFile(event) {
 function newpop1()
 {
 	rotating=false;
-	playButton.innerHTML = "<img src='images/extras/rotation_off.png' />";
+	playButtonOn.style.display = "none";
+	playButtonOff.style.display = "initial";
 	
 	var overlay = document.getElementById("popup1");
 	overlay.style.transform = "scale(1)";

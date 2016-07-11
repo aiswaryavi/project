@@ -14,7 +14,6 @@
 		<section>
 			<div id="canvas">
 				<button class="canvas-button" id="help">
-					<img src="images/extras/info.png" />
 					<div id="legend">
 						<p align='left' style='margin-left: 4px'>
 							Drag : Rotate<br>
@@ -23,8 +22,9 @@
 						</p>
 					</div>	<!-- #legend -->
 				</button>
-				<button class="canvas-button" id="toggle_button" onclick="toggle()" >
-					<img src="images/extras/rotation.png" />
+				<button class="canvas-button" id="r_on" onclick="toggle()" >
+				</button>
+				<button class="canvas-button" id="r_off" onclick="toggle()" >
 				</button>
 			</div>	<!-- .canvas -->
 		</section>
@@ -35,22 +35,22 @@
 					<h2>UPLOAD PHOTO</h2>
 					<div class="close">
 						<a onclick="closePopup()">
-							<img src="images/extras/close.png" height="15" width="15" />
+							<img src="images/extras/close.png" height="15" width="15">
 						</a>
-						<div id="closeInfo">
+						<div id="close_info">
 							Close
-						</div>	<!-- #closeInfo -->					
+						</div>	<!-- #close_info -->					
 					</div>	<!-- .close -->
 					<table>
 						<tr>
 							<td>
 								<div id="image_box">
-									<img id="image" src="images/cube1.jpg" alt="No Image" />
+									<img id="image" src="images/cube1.jpg" alt="No Image">
 									<div class="imgnav" id="prev" onclick ="prevImage()">
-										<img src="images/extras/prev.png" />
+										<img src="images/extras/prev.png">
 									</div>	<!-- #prev -->
 									<div class="imgnav" id="next" onclick ="nextImage()">
-										<img src="images/extras/next.png" />
+										<img src="images/extras/next.png">
 									</div>	<!-- #next -->
 								</div>	<!-- #image_box -->
 							</td>
@@ -59,9 +59,9 @@
 							<td>
 								<div class="button-section">
 									<form autocomplete="off">
-										<input type="file" id="browse" onchange="loadFile(event)" />
-										<input type="button" value="Done" onclick ="closePopup()" />
-										<input type="button" id="upload" value="Upload" onclick ="uploadFunc()" disabled=true />
+										<input type="file" id="browse" onchange="loadFile(event)">
+										<input type="button" value="Done" onclick ="closePopup()">
+										<input type="button" id="upload" value="Upload" onclick ="uploadFunc()" disabled=true>
 									</form>
 								</div>	<!-- .button-section -->
 							</td>
@@ -73,13 +73,13 @@
 		<!-- Share Button -->
 		<div id="share_desktop">
 			<div class="share-panel" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A//aiswaryavi.github.io/project/')">
-				<img src="images/social/facebook.png" />
+				<div class="share-pic" id="fb"></div>
 			</div>	<!-- .share-panel -->
 			<div class="share-panel" onclick="window.open('https://plus.google.com/share?url=https%3A//aiswaryavi.github.io/project/')">
-				<img src="images/social/googleplus.png" />
+				<div class="share-pic" id="gp"></div>
 			</div>	<!-- .share-panel -->
 			<div class="share-panel" onclick="window.open('https://twitter.com/home?status=https%3A//aiswaryavi.github.io/project/')">
-				<img src="images/social/twitter.png" />
+				<div class="share-pic" id="tw"></div>
 			</div>	<!-- .share-panel -->
 		</div>	<!-- #share_desktop -->
 		<footer>

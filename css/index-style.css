@@ -24,7 +24,7 @@ footer,
 .popup,
 #footer_content,
 .popup .content .close,
-.popup .content .close #closeInfo,
+.popup .content .close #close_info,
 .popup .content .imgnav,
 .popup .content .imgnav img {
 	position: absolute;
@@ -60,7 +60,7 @@ body {
 	min-height: 100%;
 	position: relative;
 	margin: 0;
-	background-color: #111;
+	background-color: #1b9;
 }
 
 header {
@@ -102,20 +102,28 @@ section {
 	z-index: 1;
 }
 
-.canvas-button img {
+.canvas-button {
+	right: 5%;
+	top: 15%;
 	width: 35px;
 	height: 35px;
+	
+	background: url('sprites/buttons.png') no-repeat;
+	background-color: #ddd;
+	box-sizing: content-box;
+	outline: 0;
+	border: #ddd 3px solid;
+	border-radius: 3px;
+	padding: 0;
 }
 
-.canvas-button {
-	display: inline-block;
-	padding: 2px;
-	right: 5%;
-	
-	background-color: #ddd;
-	outline: none;
-	border: none;
-	border-radius: 3px;
+#r_on {
+	background-position: 0 0;
+}
+
+#r_off{
+	display: none;
+	background-position: -40px 0;
 }
 
 #toggle_button {
@@ -188,7 +196,7 @@ footer {
 	cursor: pointer;
 }
 
-.popup .content .close #closeInfo {
+.popup .content .close #close_info {
 	padding: 20%;
 	bottom: 0%;
 	right: 100%;
@@ -266,7 +274,7 @@ footer {
 #share_desktop {
 	position: fixed;
 	left: -11%;
-	bottom: 0;
+	bottom: 10%;
 	height: 30%;
 	width: 18%;
 	z-index: 1070;
@@ -275,9 +283,9 @@ footer {
 .share-panel {
 	position: relative;
 	top: 8%;
-	left: -20%;
+	left: calc(-33% + 32px);
 	margin: 3% 0 3% 0;
-	height: 18%;
+	height: 40px;
 	width: 100%;
 	border-radius: 10px;
 	background-color: #ddd;
@@ -286,16 +294,31 @@ footer {
 		transition-duration: 0.3s;
 }
 
-.share-panel img {
+.share-panel .share-pic {
 	-webkit-filter: grayscale(100%);
 		filter: grayscale(100%);
 	position: absolute;
 	right: 3%;
 	top: 50%;
-	height: 70%;
 	-webkit-transform: translateY(-50%);
 	    -ms-transform: translateY(-50%);
 		transform: translateY(-50%);
+		
+	background: url('sprites/social.png') no-repeat;
+	height: 32px;
+	width: 32px;
+}
+
+#fb{
+	background-position: 0 0;
+}
+
+#gp{
+	background-position: -38px 0;
+}
+
+#tw{
+	background-position: -78px 0;
 }
 
 .share-panel:hover {
@@ -304,7 +327,7 @@ footer {
 	background-color: #fff;
 }
 
-.share-panel:hover img {
+.share-panel:hover .share-pic {
 	-webkit-filter: none;
 	filter: none;
 }
@@ -315,19 +338,21 @@ footer {
 .no-touchevents #help {
 	position: absolute;
 	top: calc(15% + 50px);
+	background-position: -80px 0;
 }
 
 .no-touchevents #legend {
 	position: absolute;
-	top: 100%;
-	right: 0;
+	top: calc(100% + 3px);
+	right: -3px;
 	padding: 10%;
 	width: 400%;
 	background-color: #ddd;
 	border-radius: 15px 0 15px 15px;
 	color: #231;
 	opacity: 0;
-	visibility: hidden;
+	
+	display: none;
 	-webkit-transition: opacity 0.5s;
 	    -ms-transition: opacity 0.5s;
 		transition: opacity 0.5s;
@@ -338,12 +363,8 @@ footer {
 }
 
 .no-touchevents #help:hover #legend {
-	visibility: visible;
+	display: initial;
 	opacity: 1;
-}
-
-.no-touchevents #toggle_button:hover {
-	cursor: pointer;
 }
 
 .no-touchevents .canvas-button {
@@ -354,6 +375,7 @@ footer {
 
 .no-touchevents .canvas-button:hover {
 	opacity: 1;
+	cursor: pointer;
 	-webkit-transition-duration: 0.4s;
 	    -ms-transition-duration: 0.4s;
 		transition-duration: 0.4s;
@@ -361,7 +383,7 @@ footer {
 		filter: none;
 }
 
-.no-touchevents .popup .content .close:hover #closeInfo {
+.no-touchevents .popup .content .close:hover #close_info {
 	visibility: visible;
 }
 
