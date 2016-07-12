@@ -7,8 +7,9 @@ var	container,
 	playButtonOn, playButtonOff,
 	camera, scene, renderer, controls,
 	mesh,
-	rx=0,ry=0,
+	rx=0, ry=0,
 	blobUrl,
+	MIN_INDEX=0, MAX_INDEX=5,
 	curr_index=0,
 	rotating=true,
 	R_WIDTH, R_HEIGHT,
@@ -140,18 +141,18 @@ function closePopup() {
 /* Functions prevImage() and nextImage() to navigate the image gallery on the pop-up	*/
 function prevImage(){
 	
-	curr_index-=1;
-	if(curr_index==-1){
-		curr_index=5;
+	curr_index--;
+	if(curr_index==MIN_INDEX-1){
+		curr_index=MAX_INDEX;
 	}
 	document.getElementById("image").src=im[curr_index];
 
 }
 
 function nextImage(){
-	curr_index+=1;
-	if(curr_index==6){
-		curr_index=0;
+	curr_index++;
+	if(curr_index==MAX_INDEX+1){
+		curr_index=MIN_INDEX;
 	}
 	document.getElementById("image").src=im[curr_index];
 
@@ -196,7 +197,7 @@ function init() {
 
 	webglAvailable();
 	if ( webglAvailable() ) {
-		renderer = new THREE.WebGLRenderer({ alpha : false });
+		renderer = new THREE.WebGLRenderer();
 	} else {
 		renderer = new THREE.CanvasRenderer();
 	}
