@@ -182,11 +182,11 @@ footer {
 	margin-top: 1%;
 	color: #444;
 	font-family: Tahoma, Arial, sans-serif;
-	font-size: 1.3vmax;
+	font-size: 90%;
 }
 
 .popup .content .close {
-	top: 1%;
+	top: .5%;
 	right: 0;
 	opacity: 0.5;
 	-webkit-transition: all 0.5s;
@@ -292,7 +292,7 @@ footer {
 
 .file-input input {
 	visibility: hidden;
-	width: 80px;
+	width: 70px;
 }
 
 .file-input:before {
@@ -309,7 +309,7 @@ footer {
 	
 	cursor: pointer;
 	text-align: center;
-	font-size: 13px;
+	font-size: 12px;
 	font-family: sans-serif;
 }
 
@@ -324,7 +324,7 @@ footer {
 	padding: 5px;
 	outline: none;
 	text-align: center;
-	font-size: 13px;
+	font-size: 12px;
 	font-family: sans-serif;
 	cursor: pointer;
 }
@@ -442,7 +442,6 @@ footer {
 .no-touchevents #help:hover #legend p {
 	display: initial;
 	margin-left: 4px;
-	align: left;
 }
 
 .no-touchevents .canvas-button {
