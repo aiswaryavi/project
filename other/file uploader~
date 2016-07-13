@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			file uploader
+		</title>
+		<style>
+			input{
+				background-color: #000000;
+				color: #ffffff;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<input type="file" value="select.."></input>
+		<br>
+		<img src="#" alt="image" />
+	</body>
+</html>
