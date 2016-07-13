@@ -1,0 +1,486 @@
+/*/////////////////////////////////////////
+	CSS stylesheet for index.html
+//////////////////////////////////////////*/
+
+/*	Importing font: eurof55		*/
+@font-face {
+	font-family: eurof55;
+	src: url('fonts/eurof55.ttf') format('truetype');
+}
+/*	Importing font: Powerweld	*/
+@font-face {
+	font-family: Powerweld;
+	src: url('fonts/Powerweld.ttf') format('truetype');
+}
+
+/*	For devices that support touch events	*/
+.touchevents #help {
+	display: none;
+}
+
+.touchevents #share_desktop {
+	display: none;
+}
+
+/* 	Common styling 			*/
+header,
+h1,
+section,
+#canvas,
+.canvas-button,
+footer,
+.overlay,
+.popup,
+#footer_content,
+.popup .content .close,
+.popup .content .close #close_info,
+.popup .content .imgnav,
+.popup .content .imgnav img {
+	position: absolute;
+}
+
+header,
+nav,
+section,
+footer,
+.overlay,
+.popup .content .imgnav img {
+	left: 0;
+	right: 0;
+}
+
+#footer_content,
+.popup {
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	        transform: translate(-50%,-50%);
+}
+
+.sprite {
+	background: url('sprites/sprites.png') no-repeat;
+}
+
+/* 	Beginning of individual styling 	*/
+html {
+	height:100%;
+	overflow: hidden;
+}
+
+body {
+	min-width: 240px;
+	min-height: 100%;
+	position: relative;
+	margin: 0;
+	background-color: #1b9;
+}
+
+header {
+	top: 0;
+	height: 20%;
+	background-color: #1a8;
+	color: #fff;
+	border-bottom-left-radius: 40%;
+	border-bottom-right-radius: 30%;
+	z-index: 30;
+}
+
+h1{
+	margin: 0;
+	top: 50%;
+	left: 50%;
+	font-family: Powerweld;
+	font-size: 3.1vh;
+	font-weight: 300;
+	letter-spacing: 3px;
+	background-color: #1b9;
+	padding: 1% 3% 1% 3%;
+	border-radius: 10px 1px 10px 1px;
+	text-shadow: -1px 0 #000, 0 2px #000, 2px 0 #333, 0 -2px #222;
+	box-shadow: 8px 5px 20px 8px #333;
+	-webkit-transform: translate(-50%,-50%) rotate(-5deg);
+	    -ms-transform: translate(-50%,-50%) rotate(-5deg);
+	        transform: translate(-50%,-50%) rotate(-5deg);
+}
+
+section {
+	top: 10%;
+	bottom: 0%;
+}
+
+#canvas {
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+}
+
+.canvas-button {
+	right: 5%;
+	width: 35px;
+	height: 35px;
+	
+	background-color: #ddd;
+	box-sizing: content-box;
+	outline: 0;
+	border: #ddd 3px solid;
+	border-radius: 3px;
+	padding: 0;
+}
+
+#r_on {
+	top: 15%;
+	background-position: 0 0;
+}
+
+#r_off{
+	top: 15%;
+	display: none;
+	background-position: -42px 0;
+}
+
+footer {
+	display: block;
+	bottom: 0;
+	height: 6%;
+	z-index: 3;
+	opacity: .8;
+		
+	background-color: #1a8;
+}
+
+#footer_content {
+	color: #eef;
+	font-family: sans-serif;
+	font-size: 2.2vmin;
+	text-shadow: .1em .1em #222;
+}
+
+/* 	Styling for the pop-up modal 	*/
+
+.overlay {
+	top: 0;
+	bottom: 0;
+	background: transparent;
+	-webkit-transform: scale(0);
+	    -ms-transform: scale(0);
+		transform: scale(0);
+	-webkit-transition: transform .5s, opacity .5s;
+	    -ms-transition: transform .5s, opacity .5s;
+		transition: transform .5s, opacity .5s;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.popup {
+	display: inline-block;
+	padding: 1%;
+	max-width: 90%;
+	max-height: 90%;
+	background-color: #eee;
+	border-radius: 5px;
+	-webkit-transition: all .5s ease-in-out;
+	    -ms-transition: all .5s ease-in-out;
+		transition: all .5s ease-in-out;
+}
+
+.popup h2 {
+	margin-top: 1%;
+	margin-left: 1%;
+	color: #444;
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 90%;
+}
+
+.popup .content .close {
+	top: .5%;
+	right: 0;
+	opacity: .5;
+	-webkit-transition: all .5s;
+	    -ms-transition: all .5s;
+		transition: all .5s;
+}
+
+#close_sprite {
+	background-position: -4px -97px;
+	width: 15px;
+	height: 15px;
+}
+
+.popup .content .close #close_info {
+	padding: 20%;
+	bottom: 0%;
+	right: 100%;
+	visibility: hidden;
+	color: #fff;
+	font-size: 90%;
+	background-color: #333;
+	border-radius: 5px;
+}
+
+.popup .content {
+	display: inline-block;
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+.popup .content #image_box {
+	display: inline-block;
+	position: relative;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+		transform: translateX(-50%);
+}
+
+.popup .content #image_box #image {
+	float: left;
+}
+
+.popup .content .imgnav {
+	background-color: #ccc;
+	height: 100%;
+	width: 10%;
+	min-width: 31px;
+	opacity: .3;
+	-webkit-transition: opacity .3s;
+	    -ms-transition: opacity .3s;
+		transition: opacity .3s;
+}
+
+.popup .content #prev {
+	left: 0;
+}
+
+.popup .content #next {
+	right: 0;
+}
+
+.img-btn {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+		transform: translate(-50%,-50%);
+}
+
+#prev_sprite {
+	background-position: -62px -99px;
+	width: 30px;
+	height: 30px;
+}
+
+#next_sprite {
+	background-position: -28px -98px;
+	width: 30px;
+	height: 30px;
+}
+
+.popup .content .button-section {
+	width: 100%;
+	display: inline-block;
+}
+
+.file-input {
+	display: inline-block;
+	position: relative;
+	color: #fff;
+}
+
+.file-input input {
+	visibility: hidden;
+	width: 70px;
+}
+
+.file-input:before {
+	content: 'Browse..';
+	position: absolute;
+	left: 0;
+	right: 0;
+	display: block;
+	background-color: #049;
+	border: 1px solid #06d;
+	border-radius: 5px;
+	padding: 5px 0px;
+	outline: none;
+	
+	cursor: pointer;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+}
+
+.popup .content .button-section input[type="button"] {
+	float: right;
+	margin-left: 1%;
+	
+	background-color: #049;
+	color: #fff;
+	border: 0;
+	border-radius: 5px;
+	padding: 5px;
+	outline: none;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	cursor: pointer;
+}
+
+.popup .content .button-section input[type="button"]:disabled {
+	background-color: #79c;
+	cursor: default;
+	opacity: .7;
+}
+
+/*	Share button for desktop	*/
+#share_desktop {
+	position: fixed;
+	left: -11%;
+	bottom: 10%;
+	height: 30%;
+	width: 18%;
+	z-index: 1070;
+}
+
+.share-panel {
+	position: relative;
+	top: 8%;
+	left: calc(-33% + 32px);
+	margin: 3% 0 3% 0;
+	height: 40px;
+	width: 100%;
+	border-radius: 10px;
+	background-color: #ddd;
+	-webkit-transition-duration: .3s;
+	    -ms-transition-duration: .3s;
+		transition-duration: .3s;
+}
+
+.share-panel .share-pic {
+	-webkit-filter: grayscale(100%);
+		filter: grayscale(100%);
+	position: absolute;
+	right: 3%;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+	height: 32px;
+	width: 32px;
+}
+
+#fb{
+	background-position: -1px -48px;
+}
+
+#gp{
+	background-position: -40px -48px;
+}
+
+#tw{
+	background-position: -81px -48px;
+}
+
+/*	Device specific styling			*/
+
+/*	For devices that do not support touch events	*/
+.no-touchevents #help {
+	position: absolute;
+	top: calc(15% + 50px);
+	background-position: -87px 0;
+}
+
+.no-touchevents #legend {
+	position: absolute;
+	top: calc(100% + 3px);
+	right: -3px;
+	padding: 15%;
+	width: 400%;
+	background-color: #ddd;
+	border-radius: 15px 0 15px 15px;
+	color: #231;
+	opacity: 0;
+	
+	display: none;
+	-webkit-transition: opacity .5s;
+	    -ms-transition: opacity .5s;
+		transition: opacity .5s;
+}
+
+.no-touchevents #help:hover {
+	border-radius: 3px 3px 0 0;
+}
+
+.no-touchevents #help:hover #legend {
+	display: initial;
+	opacity: 1;
+}
+
+.no-touchevents #help #legend p {
+	display: none;
+}
+
+.no-touchevents #help:hover #legend p {
+	display: initial;
+	margin-left: 4px;
+}
+
+.no-touchevents .canvas-button {
+	opacity: .5;
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+
+.no-touchevents .canvas-button:hover {
+	opacity: 1;
+	cursor: pointer;
+	-webkit-transition-duration: .4s;
+	    -ms-transition-duration: .4s;
+		transition-duration: .4s;
+	-webkit-filter: none;
+		filter: none;
+}
+
+.no-touchevents .popup .content .close:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+
+.no-touchevents .popup .content .close:hover #close_info {
+	visibility: visible;
+}
+
+.no-touchevents .popup .content .imgnav:hover {
+	opacity: .8;
+	cursor: pointer;
+}
+
+.no-touchevents .popup .file-input:hover:before {
+	background-color: #06c;
+}
+
+.no-touchevents .popup .content .button-section input[type="button"]:disabled:hover {
+	background-color: #79c;
+	opacity: .7;
+}
+
+.no-touchevents .popup .content .button-section input[type="button"]:hover {
+	background-color: #06c;
+}
+
+.no-touchevents .share-panel:hover {
+	left: 0;
+	cursor: pointer;
+	background-color: #fff;
+}
+
+.no-touchevents .share-panel:hover .share-pic {
+	-webkit-filter: none;
+	filter: none;
+}
+
+/*/////////////////////////////////////////////////
+		End of stylesheet
+/////////////////////////////////////////////////*/

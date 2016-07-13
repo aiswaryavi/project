@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>SnapCube - Home</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" href="css/index-style.css">
+	</head>
+
+	<body>
+		<header>
+			<h1>SnapCube</h1>
+		</header>
+		<section>
+			<div id="canvas">
+				<button class="canvas-button sprite" id="help">
+					<div id="legend">
+						<p>
+							Drag : Rotate<br>
+							Scroll : Zoom In/Out<br>
+							Click on a face to upload photo
+						</p>
+					</div>	<!-- #legend -->
+				</button>
+				<button class="canvas-button sprite" id="r_on" onclick="toggle()" >
+				</button>
+				<button class="canvas-button sprite" id="r_off" onclick="toggle()" >
+				</button>
+			</div>	<!-- .canvas -->
+		</section>
+		<!-- Pop-up Window -->
+		<div class="overlay" id="popup1" onclick="closePopup()">
+			<div class="popup" onclick="event.cancelBubble=true;if(event.stopPropagation) event.stopPropagation();">
+				<div class="content">
+					<h2>UPLOAD PHOTO</h2>
+					<div class="close">
+						<a onclick="closePopup()">
+							<div id="close_sprite" class="sprite"></div>
+						</a>
+						<div id="close_info">
+							Close
+						</div>	<!-- #close_info -->					
+					</div>	<!-- .close -->
+					<table>
+						<tr>
+							<td>
+								<div id="image_box">
+									<img id="image" alt="No Image">
+									<div class="imgnav" id="prev" onclick ="prevImage()">
+										<div id="prev_sprite" class="sprite img-btn"></div>
+									</div>	<!-- #prev -->
+									<div class="imgnav" id="next" onclick ="nextImage()">
+										<div id="next_sprite" class="sprite img-btn"></div>
+									</div>	<!-- #next -->
+								</div>	<!-- #image_box -->
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="button-section">
+									<form autocomplete="off">
+										<label class="file-input">
+											<input type="file" id="browse" onchange="loadFile(event)">
+										</label>
+										<input type="button" value="Done" onclick ="closePopup()">
+										<input type="button" id="upload" value="Upload" onclick ="uploadFunc()" disabled=true>
+									</form>
+								</div>	<!-- .button-section -->
+							</td>
+						</tr>
+					</table>
+				</div>	<!-- .content -->
+			</div>	<!-- .popup -->
+		</div>	<!-- #popup1 -->
+		<!-- Share Button -->
+		<div id="share_desktop">
+			<div class="share-panel" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A//aiswaryavi.github.io/project/')">
+				<div class="share-pic sprite" id="fb"></div>
+			</div>	<!-- .share-panel -->
+			<div class="share-panel" onclick="window.open('https://plus.google.com/share?url=https%3A//aiswaryavi.github.io/project/')">
+				<div class="share-pic sprite" id="gp"></div>
+			</div>	<!-- .share-panel -->
+			<div class="share-panel" onclick="window.open('https://twitter.com/home?status=https%3A//aiswaryavi.github.io/project/')">
+				<div class="share-pic sprite" id="tw"></div>
+			</div>	<!-- .share-panel -->
+		</div>	<!-- #share_desktop -->
+		<footer>
+			<div id="footer_content">
+				<cite>Copyright &copy; 2016. All rights reserved.</cite>
+			</div>	<!-- #footer_content -->
+		</footer>
+		<!-- JavaScript files -->
+		<script src="js/library/three.js"></script>
+		<script src="js/library/CanvasRenderer.js"></script>
+	        <script src="js/library/Projector.js"></script>
+		<script src="js/library/TrackballControls.js"></script>
+		<script src="js/library/touchevents.js"></script>
+		<script src="js/cubescript.js">	</script>
+	</body>
+</html>
+<!-- End of file -->
